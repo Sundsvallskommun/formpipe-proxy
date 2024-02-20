@@ -1,0 +1,575 @@
+{
+  "x-generator": "NSwag v13.14.5.0 (NJsonSchema v10.5.2.0 (Newtonsoft.Json v12.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FormPipeProxy API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:59704"
+    }
+  ],
+  "paths": {
+    "/api/getSystemVersion": {
+      "get": {
+        "tags": [
+          "FormpipeProxy"
+        ],
+        "operationId": "getSystemVersion",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SystemVersionInfoResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/importMetadata": {
+      "post": {
+        "tags": [
+          "FormpipeProxy"
+        ],
+        "operationId": "importMetadata",
+        "requestBody": {
+          "x-name": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportMetadataRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportMetadataResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/importPreservationObject": {
+      "post": {
+        "tags": [
+          "FormpipeProxy"
+        ],
+        "operationId": "importPreservationObject",
+        "requestBody": {
+          "x-name": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportPreservationObjectRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportPreservationObjectResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/applyImport": {
+      "post": {
+        "tags": [
+          "FormpipeProxy"
+        ],
+        "operationId": "applyImport",
+        "requestBody": {
+          "x-name": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplyImportRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplyImportResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/getAllSubmissionAgreements": {
+      "get": {
+        "tags": [
+          "FormpipeProxy"
+        ],
+        "operationId": "getAllSubmissionAgreements",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllSubmissionAgreementsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/getAllChecksumAlgorithms": {
+      "get": {
+        "tags": [
+          "FormpipeProxy"
+        ],
+        "operationId": "getAllChecksumAlgorithms",
+        "parameters": [
+          {
+            "name": "submissionAgreementId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllChecksumAlgorithmsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SystemVersionInfoResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ErrorInfo": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ErrorInfo"
+              }
+            ]
+          },
+          "Version": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ErrorInfo": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ErrorCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ErrorId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ErrorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoggedUserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "ServiceName": {
+            "type": "string",
+            "nullable": true
+          },
+          "Timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "TimestampSpecified": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ImportMetadataResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ErrorInfo": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ErrorInfo"
+              }
+            ]
+          }
+        }
+      },
+      "ImportMetadataRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "FileSetId": {
+            "type": "string",
+            "nullable": true
+          },
+          "MetadataXml": {
+            "type": "string",
+            "nullable": true
+          },
+          "SubmissionAgreementId": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ImportPreservationObjectResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ErrorInfo": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ErrorInfo"
+              }
+            ]
+          }
+        }
+      },
+      "ImportPreservationObjectRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "Chunk": {
+            "type": "string",
+            "nullable": true
+          },
+          "FileExtension": {
+            "type": "string",
+            "nullable": true
+          },
+          "FileSetId": {
+            "type": "string",
+            "nullable": true
+          },
+          "SubmissionAgreementId": {
+            "type": "string",
+            "nullable": true
+          },
+          "TotalFileSize": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "ApplyImportResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "DetectedThreats": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PackageScanningResult"
+              }
+            ]
+          },
+          "ErrorInfo": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ErrorInfo"
+              }
+            ]
+          },
+          "ImportedFileSetId": {
+            "type": "string",
+            "nullable": true
+          },
+          "MetadataValidationErrors": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/MetadataValidationError"
+            }
+          }
+        }
+      },
+      "PackageScanningResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "InfectedFiles": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "IsMetadataInfected": {
+            "type": "boolean"
+          }
+        }
+      },
+      "MetadataValidationError": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "Error": {
+            "type": "string",
+            "nullable": true
+          },
+          "Namespace": {
+            "type": "string",
+            "nullable": true
+          },
+          "Node": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ApplyImportRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ConfidentialityDegradationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ConfidentialityLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "DataSubmissionSession": {
+            "type": "string",
+            "nullable": true
+          },
+          "DeliverySpecification": {
+            "type": "string",
+            "nullable": true
+          },
+          "DeliveryType": {
+            "type": "string",
+            "nullable": true
+          },
+          "FileSetId": {
+            "type": "string",
+            "nullable": true
+          },
+          "FileSetRelations": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/FileSetRelation"
+            }
+          },
+          "Files": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/FileInfo"
+            }
+          },
+          "ImportMode": {
+            "$ref": "#/components/schemas/ImportMode"
+          },
+          "MetadataChecksum": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Checksum"
+              }
+            ]
+          },
+          "PersonalDataFlag": {
+            "type": "boolean"
+          },
+          "SubmissionAgreementId": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "FileSetRelation": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ArchiveName": {
+            "type": "string",
+            "nullable": true
+          },
+          "FileSet": {
+            "type": "string",
+            "format": "guid"
+          },
+          "Type": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "FileInfo": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "Checksum": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Checksum"
+              }
+            ]
+          },
+          "FileId": {
+            "type": "string",
+            "nullable": true
+          },
+          "OriginalFileId": {
+            "type": "string",
+            "nullable": true
+          },
+          "OriginalFileName": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Checksum": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "Algorithm": {
+            "type": "string",
+            "nullable": true
+          },
+          "Value": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          }
+        }
+      },
+      "ImportMode": {
+        "type": "integer",
+        "description": "",
+        "x-enumNames": [
+          "COMPLETE_FS",
+          "METADATAANDHASH_FS",
+          "WITHOUTHASH_FS",
+          "METADATAWITHOUTCHECKSUM_FS"
+        ],
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "GetAllSubmissionAgreementsResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ErrorInfo": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ErrorInfo"
+              }
+            ]
+          },
+          "SubmissionAgreements": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/SubmissionAgreementInfo"
+            }
+          }
+        }
+      },
+      "SubmissionAgreementInfo": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "Id": {
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "GetAllChecksumAlgorithmsResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ChecksumAlgorithms": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "ErrorInfo": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ErrorInfo"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
