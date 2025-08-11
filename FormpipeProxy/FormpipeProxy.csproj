@@ -214,6 +214,7 @@
     <Compile Include="Integration\IFormpipeClient.cs" />
     <Compile Include="Integration\ImportService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\LogUtility.cs" />
     <Compile Include="Util\RequestIdConverter.cs" />
   </ItemGroup>
   <ItemGroup>
